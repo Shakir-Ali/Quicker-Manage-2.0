@@ -1,0 +1,16 @@
+# Node
+node_modules/
+dist/
+build/
+.cache/
+*.log
+
+# OS
+.DS_Store
+
+# Vite
+.vite/
+
+# Environment
+.env
+.env.local

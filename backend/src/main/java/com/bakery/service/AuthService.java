@@ -25,9 +25,10 @@ public class AuthService {
             throw new BadCredentialsException("Invalid credentials");
         }
         
+        // Only pass username and roles to JWT, not password
         String token = jwtService.generateToken(
-            org.springframework.security.core.userdetails.User.builder()
-                .username(user.getUsername())
+            org.springframework.security.core.userdetails.User
+                .withUsername(user.getUsername())
                 .password(user.getPassword())
                 .roles(user.getRole().name())
                 .build()
