@@ -1,8 +1,11 @@
 package com.shakirali.bakery.controller;
 
+import com.shakirali.bakery.entity.Cashier;
 import com.shakirali.bakery.entity.Item;
 import com.shakirali.bakery.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,28 +19,29 @@ public class ItemController {
     private ItemService itemService;
 
     @GetMapping("/items/{id}")
-    public Item getItemById(@PathVariable String id) {
-        return itemService.getItemById(id);
+    public ResponseEntity<Item> getItemById(@PathVariable String id) {
+        return new ResponseEntity<>(itemService.getItemById(id), HttpStatus.OK);
     }
 
     @GetMapping("/items")
-    public List<Item> getAllItems() {
-        return itemService.getAllItems();
+    public ResponseEntity<List<Item>> getAllItems() {
+        return new ResponseEntity<>(itemService.getAllItems(), HttpStatus.OK);
     }
 
     @PostMapping("/items")
-    public Item saveItem(@RequestBody Item item) {
-        return itemService.saveItem(item);
+    public ResponseEntity<Item> saveItem(@RequestBody Item item) {
+        return new ResponseEntity<>(itemService.saveItem(item), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/items/{id}")
-    public void deleteItem(@PathVariable String id) {
+    public ResponseEntity<String> deleteItem(@PathVariable String id) {
         itemService.deleteItem(id);
+        return new ResponseEntity<>("Item deleted successfully", HttpStatus.OK);
     }
 
     @PutMapping("/items")
-    public Item updateItem(@RequestBody Item item) {
-        return itemService.updateItem(item);
+    public ResponseEntity<Item> updateItem(@RequestBody Item item) {
+        return new ResponseEntity<>(itemService.updateItem(item), HttpStatus.OK);
     }
 
 }

@@ -3,6 +3,8 @@ package com.shakirali.bakery.controller;
 import com.shakirali.bakery.entity.Sales;
 import com.shakirali.bakery.service.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +21,8 @@ public class SalesController {
     private SalesService salesService;
 
     @GetMapping("/sales")
-    public List<Sales> getAllSales() {
-        return salesService.getAllSales();
+    public ResponseEntity<List<Sales>> getAllSales() {
+        return new ResponseEntity<>(salesService.getAllSales(),  HttpStatus.OK);
     }
 
 }
