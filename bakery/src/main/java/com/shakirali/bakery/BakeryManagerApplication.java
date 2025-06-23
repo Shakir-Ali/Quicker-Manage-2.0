@@ -11,11 +11,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class BakeryManagerApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(BakeryManagerApplication.class, args);
-
-		AdminRepo repo = context.getBean(AdminRepo.class);
-
-		System.out.println(repo.findAll());
+		SpringApplication.run(BakeryManagerApplication.class, args);
 	}
 
 }
