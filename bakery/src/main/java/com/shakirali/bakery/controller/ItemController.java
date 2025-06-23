@@ -1,6 +1,5 @@
 package com.shakirali.bakery.controller;
 
-import com.shakirali.bakery.entity.Cashier;
 import com.shakirali.bakery.entity.Item;
 import com.shakirali.bakery.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
